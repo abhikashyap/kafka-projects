@@ -2,7 +2,7 @@ import logging
 import os
 import inspect
 
-def get_logger(name: str, log_filename: str = None, log_directory: str = 'logs') -> logging.Logger:
+def get_logger(name: str, log_filename: str = None, log_directory: str = 'logs', level=logging.INFO) -> logging.Logger:
     """
     Creates a logger that logs to both the console and a file.
 
@@ -16,6 +16,8 @@ def get_logger(name: str, log_filename: str = None, log_directory: str = 'logs')
                       this will be used instead of the auto-generated path.
         log_directory: (Optional) The name of the top-level directory for logs.
                        Defaults to 'logs'.
+        level: (Optional) The minimum logging level for the console handler.
+               Defaults to logging.INFO.
 
     Returns:
         A configured logging.Logger instance.
@@ -26,8 +28,8 @@ def get_logger(name: str, log_filename: str = None, log_directory: str = 'logs')
     if logger.hasHandlers():
         return logger
 
-    logger.setLevel(logging.DEBUG)
-
+    logger.setLevel(level)  # Capture all levels at the logger
+    
     project_root = os.getcwd()
 
     if log_filename:
@@ -66,15 +68,15 @@ def get_logger(name: str, log_filename: str = None, log_directory: str = 'logs')
     # Create a shared formatter
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    # Set up the console handler to show INFO level messages and above
+    # Set up the console handler with the specified level
     console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
+    console_handler.setLevel(level)
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
 
-    # Set up the file handler to log DEBUG level messages and above
+    # File handler still captures everything at DEBUG level and above
     file_handler = logging.FileHandler(log_file_path)
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(level)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
 

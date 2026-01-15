@@ -1,3 +1,4 @@
+import logging
 from logging_module.logger import get_logger
 import test_module.example_code as example_code
 
