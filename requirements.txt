@@ -1,1 +1,2 @@
 git+https://github.com/abhikashyap/mirror-log.git
+confluent-kafka
