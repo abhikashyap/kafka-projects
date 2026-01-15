@@ -14,7 +14,7 @@ A flexible Python logging module that can be easily imported into any project.
 To install this library from your GitHub repository, use pip:
 
 ```bash
-pip install git+https://github.com/yourusername/opencode-custom-logger.git
+pip install git+https://github.com/abhikashyap/mirror-log.git
 ```
 
 ## Usage

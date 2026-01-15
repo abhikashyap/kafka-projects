@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="opencode-custom-logger",
+    name="mirror-log",
     version="0.1.0",
-    author="Abhishek kumar",
+    author="abhikashyap",
     author_email="abhikashyap10@gmail.com",
     description="A custom Python logger that mirrors the caller's file structure.",
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/opencode-custom-logger",
+    url="https://github.com/abhikashyap/mirror-log",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
